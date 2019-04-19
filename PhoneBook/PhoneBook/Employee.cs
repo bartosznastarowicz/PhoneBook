@@ -11,15 +11,15 @@
             this.InternalPhone = internalPhone;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        public string SurName { get; private set; }
+        public string SurName { get; set; }
 
-        public int BadgeID { get; private set; }
+        public int BadgeID { get; set; }
 
-        public Departments Department { get; private set; }
+        public Departments Department { get; set; }
 
-        public string InternalPhone { get; private set; }
+        public string InternalPhone { get; set; }
 
         public string PrintBasicInfo()
         {

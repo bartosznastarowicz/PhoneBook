@@ -21,5 +21,12 @@
         {
             return this.allEmployees.Where(id => id.BadgeID == badgeId).First();
         }
+
+        public List<Employee> GetEmployeeByName(string name)
+        {
+            return this.allEmployees.Where(n => n.Name == name).ToList();
+        }
+
+
     }
 }

@@ -11,7 +11,7 @@
             SeedPhoneBookWithData();
             Console.WriteLine("Phone book");
             Console.WriteLine("-----------------------");
-            Console.WriteLine("Write Location, Badge or Quit");
+            Console.WriteLine("Write AddEmployee, Badge, Location, Name or Quit");
             string userInput;
             while (true)
             {
@@ -25,6 +25,12 @@
                     case "Badge":
                         DisplayEmployeeByBadgeId(commands[1]);
                         break;
+                    case "Name":
+                        DisplayEmployeesByName(commands[1]);
+                        break;
+                    case "AddEmployee":
+                        AddNewEmployee();
+                        break;
                     case "Quit":
                         return;
                     default:
@@ -37,8 +43,8 @@
         public static void SeedPhoneBookWithData()
         {
             var employee = new Employee("Bartek", "En", 123, Departments.Koszalin, "00-4567");
-            var employee2 = new Employee("Ania", "Zar", 456, Departments.Wroclaw, "00-1597");
-            var employee3 = new Employee("Sylwek", "Mroz", 789, Departments.Szczecin, "00-1999");
+            var employee2 = new Employee("Bartek", "Zar", 456, Departments.Wroclaw, "00-1597");
+            var employee3 = new Employee("Bartek", "Mroz", 789, Departments.Szczecin, "00-1999");
             var employee4 = new Employee("Marcin", "Rek", 963, Departments.Szczecin, "00-1588");
 
             myPhoneBook.AddEmployee(employee);
@@ -59,8 +65,39 @@
             Enum.TryParse(location, out parseDepartment);
             var employeesFromLocation = myPhoneBook.EmployeesFromLocation(parseDepartment);
             string result = string.Empty;
-            employeesFromLocation.ForEach(e => result += $"{ e.PrintFullInfo()}");
+            employeesFromLocation.ForEach(e => result += $"{ e.PrintFullInfo() }");
             Console.WriteLine(result);
+        }
+
+        private static void DisplayEmployeesByName(string name)
+        {
+            var employeesByName = myPhoneBook.GetEmployeeByName(name);
+            string result = string.Empty;
+            employeesByName.ForEach(e => result += $"{ e.PrintFullInfo() }\n");
+            Console.WriteLine(result);
+        }
+
+        private static void AddNewEmployee()
+        {
+            Console.WriteLine("Write personal details for new Employee:");
+            Console.WriteLine("Name:");
+            var name = Console.ReadLine();
+            Console.WriteLine("Last name:");
+            var surName = Console.ReadLine();
+            Console.WriteLine("Badge ID:");
+            var badgeID = Console.ReadLine();
+            Console.WriteLine("Department:");
+            var department = Console.ReadLine();
+            Console.WriteLine("Internal phone number:");
+            var internalPhone = Console.ReadLine();
+
+            int badge;
+            int.TryParse(badgeID, out badge);
+
+            Departments dep = (Departments)Enum.Parse(typeof(Departments), department);
+
+            Employee employee = new Employee(name, surName, badge, dep, internalPhone);
+            myPhoneBook.AddEmployee(employee);
         }
     }
 }

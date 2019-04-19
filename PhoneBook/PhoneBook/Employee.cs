@@ -1,11 +1,5 @@
 ﻿namespace PhoneBook
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class Employee
     {
         public Employee(string name, string surName, int badgeId, Departments department, string internalPhone)
@@ -15,32 +9,26 @@
             this.BadgeID = badgeId;
             this.Department = department;
             this.InternalPhone = internalPhone;
-            this.PrintBasicInfo(); // TODO not needed
-            this.PrintFullInfo(); // TODO not needed
         }
 
-        public string Name { get; }
+        public string Name { get; private set; }
 
-        public string SurName { get; }
+        public string SurName { get; private set; }
 
-        public int BadgeID { get; }
+        public int BadgeID { get; private set; }
 
-        public Departments Department { get; }
+        public Departments Department { get; private set; }
 
-        public string InternalPhone { get; }
-
-        public string PrintFullInfo()
-        {
-            ////string fullInfoAboutEmployee = this.Name + " " + this.SurName + " " + this.BadgeID.ToString() + " " + this.Department + " " + this.InternalPhone;
-            ////return fullInfoAboutEmployee;
-            return $"{Name} {SurName} {BadgeID} {Department} {InternalPhone}";
-        }
+        public string InternalPhone { get; private set; }
 
         public string PrintBasicInfo()
         {
-            ////string fullInfoAboutEmployee = this.Name + " " + this.Department;
-            ////return fullInfoAboutEmployee;
-            return $"{Name} {Department}";
+            return $"Name: {Name}, Location: {Department}";
+        }
+
+        public string PrintFullInfo()
+        {
+            return $"Name: {Name}, Last name: {SurName}, ID Number: {BadgeID}, Location: {Department}, Internal Phone: {InternalPhone}";
         }
     }
 }

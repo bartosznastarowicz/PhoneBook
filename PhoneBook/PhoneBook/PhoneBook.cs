@@ -1,10 +1,7 @@
 ﻿namespace PhoneBook
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class PhoneBook
     {
@@ -15,14 +12,14 @@
             this.allEmployees.Add(employee);
         }
 
-        public List<Employee> EmployeesFromLocation(Departments dep)
+        public List<Employee> EmployeesFromLocation(Departments department)
         {
-            return this.allEmployees.Where(x => x.Department == dep).ToList();
+            return this.allEmployees.Where(x => x.Department == department).ToList();
         }
         
         public Employee GetEmployeeByBadgeId(int badgeId)
         {
-            return this.allEmployees.Where(id => id.BadgeID == badgeId).FirstOrDefault();
+            return this.allEmployees.Where(id => id.BadgeID == badgeId).First();
         }
     }
 }

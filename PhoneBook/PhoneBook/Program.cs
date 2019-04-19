@@ -1,10 +1,6 @@
 ﻿namespace PhoneBook
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
@@ -16,11 +12,11 @@
             Console.WriteLine("Phone book");
             Console.WriteLine("-----------------------");
             Console.WriteLine("Write Location, Badge or Quit");
-            string textFromLine;
+            string userInput;
             while (true)
             {
-                textFromLine = Console.ReadLine();
-                var commands = textFromLine.Split(' ');
+                userInput = Console.ReadLine();
+                var commands = userInput.Split(' ');
                 switch (commands[0])
                 {
                     case "Location":

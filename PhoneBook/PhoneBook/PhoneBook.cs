@@ -19,14 +19,12 @@
         
         public Employee GetEmployeeByBadgeId(int badgeId)
         {
-            return this.allEmployees.Where(id => id.BadgeID == badgeId).First();
+            return this.allEmployees.Where(id => id.BadgeID == badgeId).FirstOrDefault();
         }
 
         public List<Employee> GetEmployeeByName(string name)
         {
             return this.allEmployees.Where(n => n.Name == name).ToList();
         }
-
-
     }
 }
